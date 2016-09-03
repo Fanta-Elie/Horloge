@@ -1,0 +1,122 @@
+body{
+  background-color: #95BBBF;
+}
+/*----- Ici commence uniquement la partie personalisation de l'horloge(choix de l'image et création des aiguilles) -----*/
+#horloge{
+  height: 400px;
+  margin: 40px auto;
+  position: relative;
+  width: 400px;
+  background:url(horloge.png) no-repeat scroll center 25%;
+  background-size: 100%;
+}
+#horloge:before{
+  border-radius:50%;
+  box-shadow: -2px -2px 5px #000000 inset, -2px 2px 5px #000000 inset, 2px -2px 5px #000000 inset, 2px 2px 5px #000000 inset;
+  position: absolute;
+  content: '';
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+#seconde{
+  position: absolute;
+  left: 198px;
+  top: 25px;
+  height: 180px;
+  border: 2px solid rgba(57, 76, 115, 0.8);
+  border-radius: 50%;
+}
+#minute{
+  position: absolute;
+  left: 196px;
+  top: 55px;
+  height: 150px;
+  border: 4px solid rgba(149, 187, 191, 0.8);
+  border-radius: 50%;
+}
+#heure{
+  position: absolute;
+  left: 194px;
+  top: 100px;
+  height: 100px;
+  border: 6px solid rgba(128 , 162 , 191, 0.8);
+  border-radius: 50%;
+}
+#centre{
+  position: absolute;
+  left: 194px;
+  top: 194px;
+  border: 6px solid rgba(208, 242, 217, 1);
+  border-radius: 50%;
+}
+.rond{
+  position: absolute;
+  border-radius: 50%;
+}
+/*----- Ici ce termine la partie personalisation de l'horloge -----*/
+
+/*----- Ici commence la partie animation , j'indique dans un 1er temps avec mes keyframes la rotation des aiguilles (from: "tu part de" to: "tu va à") -----*/
+@-webkit-keyframes tour{
+  from{
+    -webkit-transform: rotate(0deg);
+  }
+  to{
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-o-keyframes tour{
+  from{
+    -o-transform: rotate(0deg);
+  }
+  to{
+    -o-transform: rotate(360deg);
+  }
+}
+@keyframes tour{
+  from{
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to{
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+/*Et ensuite ici j'indique simplement combien de temps la rotation devras prendre ainsi de quel façon elle doit ce comporter (steps : Cela donne pour éffet de s'arreter à chaque seconde et de reprendre , un peu comme un sursaut à mon aiguille*/
+#seconde{
+  -webkit-animation: tour 60s steps(60, end) infinite;
+  -webkit-transform-origin: 50% 175px;
+  -o-animation: tour 60s steps(60, end) infinite;
+  -o-transform-origin: 50% 175px;
+  animation: tour 60s steps(60, end) infinite;
+  transform-origin: 50% 175px;
+}
+#minute{
+  -webkit-animation: tour 3600s steps(60, end) infinite;
+  -webkit-transform-origin: 50% 145px;
+  -o-animation: tour 3600s steps(60, end) infinite;
+  -o-transform-origin: 50% 145px;
+  animation: tour 3600s steps(60, end) infinite;
+  transform-origin: 50% 145px;
+}
+#heure{
+  -webkit-animation: tour 43200s linear infinite;
+  -webkit-transform-origin: 50% 100px;
+  -o-animation: tour 43200s linear infinite;
+  -o-transform-origin: 50% 100px;
+  animation: tour 43200s linear infinite;
+  transform-origin: 50% 100px;
+}
+/*Ici simple personsalisation de ma phrase sous l'horloge*/
+#date {
+  color: #394C73;
+  font-family: helvetica;
+  font-size: 20px;
+  position: absolute;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  margin-left: 10%;
+}
